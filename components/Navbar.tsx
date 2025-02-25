@@ -22,19 +22,19 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between p-4 bg-white shadow-md">
       {/* Logo centrado en móviles, alineado a la izquierda en pantallas medianas y grandes */}
-      <div className="flex justify-center md:justify-start">
-        <Link href="/"> {/* Envuelve el logo en un Link */}
-          <div className="relative w-20 h-16 md:w-32 md:h-24 cursor-pointer"> {/* Ajusta el tamaño del contenedor del logo */}
-            <Image
-              src="/logonegro.png"
-              alt="Torneo de Pádel"
-              fill
-              className="object-cover transition-transform duration-300 hover:scale-105"
-              style={{ objectFit: "cover" }} // Asegura que la imagen no se corte
-            />
-          </div>
-        </Link>
-      </div>
+      <div className="flex justify-center md:justify-start"> {/* Centrado en móviles, a la izquierda en pantallas medianas y grandes */}
+  <Link href="/"> {/* Envuelve el logo en un Link */}
+    <div className="relative w-32 h-24 cursor-pointer"> {/* Tamaño fijo del logo */}
+      <Image
+        src="/logonegro.png"
+        alt="Torneo de Pádel"
+        fill
+        className="object-cover transition-transform duration-300 hover:scale-105"
+        style={{ objectFit: "cover" }} // Asegura que la imagen no se corte
+      />
+    </div>
+  </Link>
+</div>
 
       {/* Botón dinámico según el estado de autenticación */}
       {isAuthenticated ? (
