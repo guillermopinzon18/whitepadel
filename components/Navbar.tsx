@@ -21,8 +21,8 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between p-4 bg-white shadow-md">
-      {/* Logo centrado con enlace al dashboard */}
-      <div className="flex-1 flex justify-center md:ml-32">
+      {/* Logo centrado en móviles, alineado a la izquierda en pantallas medianas y grandes */}
+      <div className="flex justify-center md:justify-start">
         <Link href="/"> {/* Envuelve el logo en un Link */}
           <div className="relative w-20 h-16 md:w-32 md:h-24 cursor-pointer"> {/* Ajusta el tamaño del contenedor del logo */}
             <Image
