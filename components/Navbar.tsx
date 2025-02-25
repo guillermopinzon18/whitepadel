@@ -70,7 +70,7 @@ const Navbar = () => {
             onMouseLeave={() => setHovered(false)}
             className={`transition-all duration-300 ease-in-out 
               ${hovered ? 'bg-gradient-to-r from-gray-500 to-red-500 text-white shadow-lg scale-105' : 'bg-white text-red-500 border-2 border-red-500 hover:border-red-700'}
-              py-2 px-6 mr-10 rounded-full font-semibold hover:bg-red-500 hover:text-white`}
+              py-2 px-6 rounded-full font-semibold hover:bg-red-500 hover:text-white`}
           >
             Ingresar
           </Button>
