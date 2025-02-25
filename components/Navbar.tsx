@@ -22,9 +22,9 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between p-4 bg-white shadow-md">
       {/* Logo centrado con enlace al dashboard */}
-      <div className="flex-1 flex justify-center ml-32">
+      <div className="flex-1 flex justify-center md:ml-32">
         <Link href="/"> {/* Envuelve el logo en un Link */}
-          <div className="relative w-32 h-24 cursor-pointer"> {/* Ajusta el tamaño del contenedor del logo */}
+          <div className="relative w-20 h-16 md:w-32 md:h-24 cursor-pointer"> {/* Ajusta el tamaño del contenedor del logo */}
             <Image
               src="/logonegro.png"
               alt="Torneo de Pádel"
@@ -46,7 +46,7 @@ const Navbar = () => {
             onClick={handleLogout}
             className="text-red-500 hover:bg-red-50 p-2" // Estilos personalizados
           >
-            <LogOut className="h-10 w-10" /> {/* Ícono de cerrar sesión */}
+            <LogOut className="h-8 w-8 md:h-10 md:w-10" /> {/* Ícono de cerrar sesión */}
           </Button>
 
           {/* Botón de perfil (sin cuadrado que lo rodee) */}
@@ -55,9 +55,9 @@ const Navbar = () => {
               variant="ghost" // Usa variant="ghost" para eliminar el fondo
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
-              className="text-red-500 hover:bg-red-50 p-2 mr-10" // Estilos personalizados
+              className="text-red-500 hover:bg-red-50 p-2 md:mr-10" // Estilos personalizados
             >
-              <User className="h-10 w-10" /> {/* Ícono de usuario */}
+              <User className="h-8 w-8 md:h-10 md:w-10" /> {/* Ícono de usuario */}
             </Button>
           </Link>
         </div>
@@ -68,9 +68,9 @@ const Navbar = () => {
             variant="outline"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className={`transition-all duration-300 ease-in-out 
+            className={`transition-all duration-300 ease-in-out text-sm md:text-base
               ${hovered ? 'bg-gradient-to-r from-gray-500 to-red-500 text-white shadow-lg scale-105' : 'bg-white text-red-500 border-2 border-red-500 hover:border-red-700'}
-              py-2 px-6 rounded-full font-semibold hover:bg-red-500 hover:text-white`}
+              py-1 px-4 md:py-2 md:px-6 rounded-full font-semibold hover:bg-red-500 hover:text-white`}
           >
             Ingresar
           </Button>
