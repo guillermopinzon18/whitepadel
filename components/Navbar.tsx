@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between p-4 bg-white shadow-md">
       <div className="flex items-center hidden md:block">
-        <img src="/file.svg" alt="Logo" className="h-10" />
+        {/* <Image src="/file.svg" alt="Logo" className="h-10" /> */}
       </div>
       <Link href="/">
         <h1 className="text-4xl font-bold text-center ml-20 bg-gradient-to-r from-gray-500 to-red-500 bg-clip-text text-transparent animate-gradient cursor-pointer">
