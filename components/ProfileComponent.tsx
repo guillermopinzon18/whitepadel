@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAuth } from "@/app/AuthContext";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
 const ProfileComponent = () => {
-  const { isAuthenticated, logout } = useAuth(); // Obtén el estado de autenticación y la función de logout
+  const { logout } = useAuth(); // Obtén el estado de autenticación y la función de logout
   const router = useRouter();
-  const [userData, setUserData] = useState<{ email: string} | null>(null);
 
   // Simulación de datos del usuario (deberías obtenerlos desde tu backend)
 //   useEffect(() => {

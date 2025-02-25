@@ -1,11 +1,10 @@
 "use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useAuth } from "@/app/AuthContext";
-import { useState, useEffect } from "react";
 
 const Dashboard = () => {
     const router = useRouter();
