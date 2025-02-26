@@ -53,7 +53,7 @@ const Dashboard = () => {
             {/* Tarjetas */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {/* Tarjeta: Próximo Torneo */}
-                <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                <Card className="bg-gradient-to-r from-blue-800 to-blue-300 text-black">
                     <CardHeader>
                         <CardTitle>Próximo Torneo</CardTitle>
                         <CardTitle>No te pierdas el próximo evento</CardTitle>
@@ -70,7 +70,7 @@ const Dashboard = () => {
                 </Card>
 
                 {/* Tarjeta: Ranking */}
-                <Card className="bg-gradient-to-r from-green-600 to-teal-600 text-white">
+                <Card className="bg-gradient-to-r from-blue-800 to-gray-300 text-white">
                     <CardHeader>
                         <CardTitle>Ranking</CardTitle>
                         <CardTitle>Top jugadores del torneo</CardTitle>
@@ -86,20 +86,20 @@ const Dashboard = () => {
                         {/* Botón para ver el ranking completo */}
                         <Button
                             onClick={() => router.push("/ranking")} // Redirige a /ranking
-                            className="w-full bg-white text-green-600 hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+                            className="w-full bg-white text-blue-500 hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
                         >
                             Ver Ranking Completo
                         </Button>
                     </CardContent>
                 </Card>
                 {/* Tarjeta: Partidos Jugados o Logo */}
-                <Card className="bg-gradient-to-r from-red-600 to-orange-600 text-white">
+                <Card className="bg-gradient-to-r from-blue-800 to-blue-300 text-black">
                     <CardHeader>
                         <CardTitle>
                             {isAuthenticated ? "Partidos Jugados" : "Bienvenido"}
                         </CardTitle>
                         <CardTitle>
-                            {isAuthenticated ? "Tus últimos partidos" : "Inicia sesión para ver tus partidos"}
+                            {isAuthenticated ? "Tus últimos partidos" : "Inicia sesión para ver tus últimos partidos"}
                         </CardTitle>
                     </CardHeader>
                     {/* <CardContent>
@@ -142,8 +142,8 @@ const Dashboard = () => {
                 <div className="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm transition-all duration-300 group-hover:bg-opacity-50"></div>
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white space-y-4">
-                    <h2 className="text-3xl font-bold text-center">¡Bienvenido al Torneo White Pádel!</h2>
-                    <p className="text-lg text-center">Participa en el mejor torneo de pádel de la ciudad.</p>
+                    <h2 className="text-3xl font-bold text-center">¡Bienvenido al Torneo White Padel!</h2>
+                    <p className="text-lg text-center">Participa en el mejor torneo de padel de la ciudad.</p>
                     <Button
                         onClick={() => handleRedirect(isAuthenticated ? "/tournament" : "/login")}
                         className="bg-white text-black hover:bg-gray-100"
@@ -155,16 +155,14 @@ const Dashboard = () => {
 
             {/* Sección de imagen y texto */}
             <div className="w-full flex flex-col md:flex-row items-center justify-between rounded-lg overflow-hidden group h-96 md:h-[30rem] bg-white">
-                {/* Imagen - Se oculta en pantallas pequeñas */}
                 <div className="relative w-full md:w-1/2 h-full hidden md:block bg-transparent">
                     <Image
                         src="/padel12.webp"
                         alt="Torneo de Pádel"
                         fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="object-contain transition-transform duration-300 group-hover:scale-105"
                     />
                 </div>
-
                 {/* Texto con fondo gris clarito */}
                 <div className="relative w-full md:w-1/2 h-full flex items-center justify-center px-8 space-y-4 bg-white backdrop-blur-md">
                     <div className="space-y-4 text-center">
@@ -172,7 +170,7 @@ const Dashboard = () => {
                         <h2
                             className="text-3xl font-bold text-center bg-gradient-to-r from-blue-400 via-gray-500 to-red-500 bg-clip-text text-transparent animate-gradient"
                         >
-                            ¡Bienvenido al Torneo White Pádel!
+                            ¡Bienvenido al Torneo White Padel!
                         </h2>
                         {/* Párrafo con efecto hover moderno */}
                         <p className="text-lg transition-all duration-300 text-gray-800 hover:text-transparent bg-clip-text hover:bg-gradient-to-r from-blue-400 via-gray-500 to-red-500">
@@ -180,7 +178,7 @@ const Dashboard = () => {
                         </p>
                         <Button
                             onClick={() => handleRedirect(isAuthenticated ? "/tournament" : "/login")}
-                            className="bg-black text-white hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
+                            className="bg-blue-500 text-white hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
                         >
                             {isAuthenticated ? "Ver Torneo" : "Inscríbete Ahora"}
                         </Button>

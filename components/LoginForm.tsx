@@ -19,13 +19,13 @@ const LoginForm = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
+    
         // Verifica que los campos no estén vacíos
         if (!email || !password) {
             setMessage('Por favor, completa todos los campos');
             return;
         }
-
+    
         try {
             const response = await fetch('https://whitepadel.onrender.com/auth/login', {
                 method: 'POST',
@@ -34,11 +34,16 @@ const LoginForm = () => {
                 },
                 body: JSON.stringify({ email, password }),
             });
-
+    
             const data = await response.json();
             if (response.ok) {
                 setMessage('Inicio de sesión exitoso');
                 login(); // Actualiza el estado de autenticación
+    
+                // Guardar la información del usuario y el token en localStorage
+                localStorage.setItem('user', JSON.stringify(data.user));
+                localStorage.setItem('token', data.token);
+    
                 router.push('/'); // Redirige al dashboard
             } else {
                 setMessage(data.message || 'Error al iniciar sesión');
@@ -74,7 +79,7 @@ const LoginForm = () => {
                 {/* Imagen decorativa arriba del título */}
                 <div className="flex justify-center mb-10">
                     <Image
-                        src="/logonegro.png"
+                        src="/logoazul.png"
                         alt="Ícono de pádel"
                         width={100}
                         height={100}
@@ -121,8 +126,8 @@ const LoginForm = () => {
                             onMouseEnter={() => setHovered(true)}
                             onMouseLeave={() => setHovered(false)}
                             className={`transition-all duration-300 ease-in-out 
-                  ${hovered ? 'bg-gradient-to-r from-gray-500 to-red-500 text-white shadow-lg scale-105' : 'bg-white text-red-500 border-2 border-red-500 hover:border-red-700'}
-                  py-2 px-6 rounded-full font-semibold hover:bg-red-500 hover:text-white`}
+                  ${hovered ? 'bg-gradient-to-r from-gray-500 to-blue-500 text-white shadow-lg scale-105' : 'bg-white text-blue-500 border-2 border-blue-500 hover:border-red-700'}
+                  py-2 px-6 rounded-full font-semibold hover:bg-blue-500 hover:text-white`}
                         >
                             Ingresar
                         </Button>
@@ -134,9 +139,9 @@ const LoginForm = () => {
 
                 {/* Enlace para redirigir a /register */}
                 <div className="text-center mt-6">
-                    <span className="text-sm text-gray-600">No tienes una cuenta? </span>
+                    <span className="text-sm text-blue-600">No tienes una cuenta? </span>
                     <Link href="/register">
-                        <span className="text-sm text-red-500 hover:text-red-700 cursor-pointer">
+                        <span className="text-sm text-blue-500 hover:text-blue-700 cursor-pointer">
                             Regístrate aquí
                         </span>
                     </Link>
