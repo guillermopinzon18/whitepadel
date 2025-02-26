@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "@/app/AuthContext";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -11,9 +11,16 @@ import { ChevronLeft } from "lucide-react"; // Asegúrate de tener lucide-react 
 const ProfileComponent = () => {
   const { logout } = useAuth(); // Obtén el estado de autenticación y la función de logout
   const router = useRouter();
+  const [user, setUser] = useState({ email: "", puntos: 0 }); // Estado para almacenar la información del usuario
 
-  // Recuperar la información del usuario desde localStorage
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  // Recuperar la información del usuario desde localStorage (solo en el cliente)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const userString = localStorage.getItem("user");
+      const user = userString ? JSON.parse(userString) : {};
+      setUser(user);
+    }
+  }, []);
 
   // Datos iniciales
   const ranking = 0; // Ranking inicial
@@ -28,6 +35,11 @@ const ProfileComponent = () => {
     router.push("/login"); // Redirige al login
   };
 
+  // Si no estamos en el cliente, no renderizamos nada
+  if (typeof window === "undefined") {
+    return null;
+  }
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full text-center">
@@ -36,7 +48,6 @@ const ProfileComponent = () => {
           <Link href="/">
             <Button variant="ghost" className="p-0 text-gray-600 hover:text-gray-900 mb-4">
               <ChevronLeft className="mr-2 h-4 w-4" />
-              
             </Button>
           </Link>
         </div>
@@ -95,19 +106,7 @@ const ProfileComponent = () => {
         <div className="mt-6">
           <h2 className="text-xl font-bold text-gray-800 mb-4">Últimos Torneos Jugados</h2>
           <div className="bg-gray-50 p-4 rounded-lg">
-            {/* {lastTournaments.length > 0 ? (
-              lastTournaments.map((tournament, index) => (
-                <div key={index} className="text-left">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-700 font-medium">{tournament.name}</span>
-                    <span className="text-gray-900">Posición: {tournament.position}</span>
-                  </div>
-                  <div className="text-sm text-gray-500 mt-2">Fecha: {tournament.date}</div>
-                </div>
-              ))
-            ) : ( */}
-              <span className="text-gray-700">No ha jugado ningún torneo</span>
-            {/* )} */}
+            <span className="text-gray-700">No ha jugado ningún torneo</span>
           </div>
         </div>
 
