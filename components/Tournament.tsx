@@ -39,7 +39,7 @@ const TournamentForm = () => {
   
   const checkIfRegistered = async (email: string) => {
     try {
-      const response = await fetch("http://localhost:3001/participants");
+      const response = await fetch("https://whitepadel.onrender.com/participants");
   
       if (!response.ok) {
         throw new Error(`Error al verificar inscripción: ${response.statusText}`);
@@ -68,7 +68,7 @@ const TournamentForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:3001/participants", {
+      const response = await fetch("https://whitepadel.onrender.com/participants", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
