@@ -16,7 +16,6 @@ const ProfileComponent = () => {
   const user = JSON.parse(localStorage.getItem('user') || '{}');
 
   // Datos iniciales
-  const lastTournaments = []; // No ha jugado ningún torneo
   const ranking = 0; // Ranking inicial
   const matchesPlayed = 0; // Partidos jugados
   const matchesWon = 0; // Partidos ganados

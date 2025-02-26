@@ -28,23 +28,33 @@ const TournamentForm = () => {
   }, []);
 
   // Función para verificar si el usuario ya está inscrito
+  interface Participant {
+    player1: {
+      email: string;
+    };
+    player2: {
+      email: string;
+    };
+  }
+  
   const checkIfRegistered = async (email: string) => {
     try {
       const response = await fetch("http://localhost:3001/participants");
-      const data = await response.json();
-
-      if (response.ok) {
-        // Buscar si el correo ya está registrado
-        const isAlreadyRegistered = data.some(
-          (participant: any) =>
-            participant.player1.email === email || participant.player2.email === email
-        );
-
-        if (isAlreadyRegistered) {
-          setIsRegistered(true); // Deshabilitar el formulario
-        }
-      } else {
-        console.error("Error al verificar inscripción:", data.message);
+  
+      if (!response.ok) {
+        throw new Error(`Error al verificar inscripción: ${response.statusText}`);
+      }
+  
+      const data: Participant[] = await response.json();
+  
+      // Buscar si el correo ya está registrado
+      const isAlreadyRegistered = data.some(
+        (participant) =>
+          participant.player1.email === email || participant.player2.email === email
+      );
+  
+      if (isAlreadyRegistered) {
+        setIsRegistered(true); // Deshabilitar el formulario
       }
     } catch (error) {
       console.error("Error de conexión:", error);
